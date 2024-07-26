@@ -1,5 +1,3 @@
-//  Copyright © 2024 Woolworths Group Limited. All rights reserved.
-
 import XCTest
 @testable import Cards
 

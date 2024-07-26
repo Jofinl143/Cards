@@ -14,6 +14,10 @@
 		B4AE08722C53701300643F06 /* CardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE08712C53701300643F06 /* CardsTests.swift */; };
 		B4AE087C2C53701300643F06 /* CardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE087B2C53701300643F06 /* CardsUITests.swift */; };
 		B4AE087E2C53701300643F06 /* CardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE087D2C53701300643F06 /* CardsUITestsLaunchTests.swift */; };
+		B4AE08912C5456F900643F06 /* LiveCardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE08902C5456F900643F06 /* LiveCardInteractor.swift */; };
+		B4AE08932C54570A00643F06 /* LiveCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE08922C54570A00643F06 /* LiveCardView.swift */; };
+		B4AE08952C54572500643F06 /* LiveAppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE08942C54572500643F06 /* LiveAppState.swift */; };
+		B4AE08972C54573C00643F06 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE08962C54573C00643F06 /* Cards.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		B4AE08772C53701300643F06 /* CardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AE087B2C53701300643F06 /* CardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsUITests.swift; sourceTree = "<group>"; };
 		B4AE087D2C53701300643F06 /* CardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B4AE08902C5456F900643F06 /* LiveCardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCardInteractor.swift; sourceTree = "<group>"; };
+		B4AE08922C54570A00643F06 /* LiveCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCardView.swift; sourceTree = "<group>"; };
+		B4AE08942C54572500643F06 /* LiveAppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAppState.swift; sourceTree = "<group>"; };
+		B4AE08962C54573C00643F06 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +105,7 @@
 				B4AE08602C53701200643F06 /* CardsApp.swift */,
 				B4AE08622C53701200643F06 /* ContentView.swift */,
 				B4AE08642C53701300643F06 /* Assets.xcassets */,
+				B4AE088A2C54560400643F06 /* Modules */,
 				B4AE08662C53701300643F06 /* Preview Content */,
 			);
 			path = Cards;
@@ -125,6 +134,57 @@
 				B4AE087D2C53701300643F06 /* CardsUITestsLaunchTests.swift */,
 			);
 			path = CardsUITests;
+			sourceTree = "<group>";
+		};
+		B4AE088A2C54560400643F06 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				B4AE088B2C54562200643F06 /* Live Cards */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		B4AE088B2C54562200643F06 /* Live Cards */ = {
+			isa = PBXGroup;
+			children = (
+				B4AE088F2C54568600643F06 /* Models */,
+				B4AE088E2C54567C00643F06 /* Views */,
+				B4AE088D2C54566D00643F06 /* AppStates */,
+				B4AE088C2C54565C00643F06 /* Interactors */,
+			);
+			path = "Live Cards";
+			sourceTree = "<group>";
+		};
+		B4AE088C2C54565C00643F06 /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				B4AE08902C5456F900643F06 /* LiveCardInteractor.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		B4AE088D2C54566D00643F06 /* AppStates */ = {
+			isa = PBXGroup;
+			children = (
+				B4AE08942C54572500643F06 /* LiveAppState.swift */,
+			);
+			path = AppStates;
+			sourceTree = "<group>";
+		};
+		B4AE088E2C54567C00643F06 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B4AE08922C54570A00643F06 /* LiveCardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B4AE088F2C54568600643F06 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B4AE08962C54573C00643F06 /* Cards.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +317,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4AE08912C5456F900643F06 /* LiveCardInteractor.swift in Sources */,
+				B4AE08952C54572500643F06 /* LiveAppState.swift in Sources */,
 				B4AE08632C53701200643F06 /* ContentView.swift in Sources */,
+				B4AE08972C54573C00643F06 /* Cards.swift in Sources */,
+				B4AE08932C54570A00643F06 /* LiveCardView.swift in Sources */,
 				B4AE08612C53701200643F06 /* CardsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,8 +492,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -437,9 +502,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cards.com.Cards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -457,8 +526,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,9 +536,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.cards.com.Cards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

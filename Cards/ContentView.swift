@@ -1,5 +1,3 @@
-//  Copyright © 2024 Woolworths Group Limited. All rights reserved.
-
 import SwiftUI
 
 struct ContentView: View {
