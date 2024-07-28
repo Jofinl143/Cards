@@ -4,7 +4,18 @@ import SwiftUI
 struct CardsApp: App {
     var body: some Scene {
         WindowGroup {
-            LiveCardView()
+            TabView {
+                LiveCardsView()
+                    .tabItem {
+                        Label("Cards", systemImage: "list.dash")
+                    }
+                
+                SavedCardsView()
+                    .tabItem {
+                        Label("Saved Cards", systemImage: "creditcard.and.123")
+                    }
+            }
+            
         }
     }
 }
