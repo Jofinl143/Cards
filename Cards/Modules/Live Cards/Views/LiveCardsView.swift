@@ -7,8 +7,7 @@ struct LiveCardsView: View {
         VStack(spacing: 0) {
             switch viewModel.liveCardsViewState {
             case let .loaded(cards):
-                LiveCardDataView(cards: cards)
-                    .environmentObject(viewModel)
+                LiveCardDataView(viewModel: viewModel, cards: cards)
             case .loading:
                 EmptyCardView(text: "Loading...")
             case .error:
@@ -40,8 +39,7 @@ struct LiveCardDataView: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                         ForEach(value, id: \.id) { card in
                             NavigationLink(value: card) {
-                                CardView(isCardSaved: false, isFromSavedCardView: false, card: card)
-                                    .environmentObject(viewModel)
+                                CardView(liveCardViewModel: viewModel, isFromSavedCardView: false, card: card)
                             }
                         }
                     }

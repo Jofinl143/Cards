@@ -38,13 +38,8 @@ class DBHelper {
         sqlite3_finalize(createTableStatement)
     }
     
-    func insert(id: Int, uid: String, credit_card_number: String, credit_card_expiry_date: String, credit_card_type: String, isCardSaved: Int) {
-        let cards = read()
-        for c in cards {
-            if c.id == id {
-                return
-            }
-        }
+    func insert(id: Int, uid: String, credit_card_number: String, credit_card_expiry_date: String, credit_card_type: String, isCardSaved: Int) -> Bool {
+        
         let insertStatementString = "INSERT INTO CARD (Id, uid, creditCardNumber, creditCardExpiryDate, creditCardType, isCardSaved) VALUES (?, ?, ?, ?, ?, ?);"
         var insertStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
@@ -57,16 +52,19 @@ class DBHelper {
             
             if sqlite3_step(insertStatement) == SQLITE_DONE {
                 print("Successfully inserted row.")
+                return true
             } else {
                 print("Could not insert row.")
+                return false
             }
         } else {
             print("INSERT statement could not be prepared.")
         }
         sqlite3_finalize(insertStatement)
+        return false
     }
     
-    func read() -> [Card] {
+    func read() -> [Card]? {
         let queryStatementString = "SELECT * FROM CARD;"
         var queryStatement: OpaquePointer? = nil
         var cards : [Card] = []
@@ -103,26 +101,5 @@ class DBHelper {
             print("DELETE statement could not be prepared")
         }
         sqlite3_finalize(deleteStatement)
-    }
-    
-    func isCardAvailable(currentId: Int) -> Bool {
-        let queryStatementString = "SELECT * FROM card Where Id = ?;"
-        var queryStatement: OpaquePointer? = nil
-        if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
-            if sqlite3_step(queryStatement) == SQLITE_ROW {
-                let id = sqlite3_column_int(queryStatement, 0)
-                guard let queryResultCol1 = sqlite3_column_text(queryStatement, 1) else {
-                    print("Query result is nil")
-                    return false
-                }
-                print("\nQuery Result:")
-                return currentId == id
-            } else {
-                print("\nQuery returned no results.")
-            }
-        } else {
-            print("statement could not be prepared")
-        }
-        return false
     }
 }

@@ -1,18 +1,7 @@
 import SwiftUI
 
-struct CardView: View {
-    @ObservedObject var liveCardViewModel = LiveCardViewModel()
-    
-    let isFromSavedCardView: Bool
+struct CardDetailsView: View {
     let card: Card
-    
-    var plusOrMinusImage: String {
-        if card.isCardSaved == 1 {
-            return "minus.circle"
-        } else {
-            return "plus.circle"
-        }
-    }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -20,20 +9,6 @@ struct CardView: View {
             HStack {
                 Text("Nicolas Martin")
                     .font(.system(size: 18, weight: .medium, design: .serif))
-                Spacer()
-                if !isFromSavedCardView {
-                    Image(systemName: plusOrMinusImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 24, height: 24)
-                        .onTapGesture {
-                            if card.isCardSaved == 1 {
-                                liveCardViewModel.deleteCard(card: card)
-                            } else {
-                                liveCardViewModel.saveCard(card: card)
-                            }
-                        }
-                }
             }
             .padding()
             
@@ -63,9 +38,6 @@ struct CardView: View {
         .overlay(RoundedRectangle(cornerRadius: 6)
             .stroke(Color.black.opacity(0.5), lineWidth: 1)
         )
-        .alert("Your card is saved", isPresented: $liveCardViewModel.showCardSavedAlert) {
-            Button("OK", role: .cancel) { }
-        }
         .cornerRadius(8)
         .shadow(radius: 4)
         .padding(.horizontal)
@@ -74,5 +46,5 @@ struct CardView: View {
 }
 
 #Preview {
-    CardView(isFromSavedCardView: false, card: Card(id: 1, uid: "123", credit_card_number: "123457894", credit_card_expiry_date: "11 Sept", credit_card_type: "Visa"))
+    CardDetailsView(card: Card(id: 1, uid: "123", credit_card_number: "123457894", credit_card_expiry_date: "11 Sept", credit_card_type: "Visa", isCardSaved: 1))
 }

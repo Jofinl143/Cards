@@ -4,13 +4,11 @@ enum SavedCardsViewState: Equatable {
     case loading
     case loaded([Card])
     case error
-
+    
     static func == (lhs: SavedCardsViewState, rhs: SavedCardsViewState) -> Bool {
         switch (lhs, rhs) {
         case (.loading, .loading):
             return true
-//        case let (.error(lhsError), .error(rhsError)):
-//            return lhsError.localizedDescription == rhsError.localizedDescription
         case let (.loaded(lhsCards), .loaded(rhsCards)):
             return lhsCards == rhsCards
         default:
@@ -24,21 +22,11 @@ class SavedCardsViewModel: ObservableObject {
     
     var db: DBHelper = DBHelper()
     
-    init() {
-        savedCardsViewState = .loading
-        getSavedCards()
-    }
-    
     func getSavedCards() {
-        if db.read().count > 0 {
-            savedCardsViewState = .loaded(db.read())
-        } else {
+        guard let cards = db.read(), cards.count > 0 else {
             savedCardsViewState = .error
+            return
         }
-    }
-        
-    func deleteCard(card: Card) {
-        db.deleteCardByID(id: card.id)
-        getSavedCards()
+        savedCardsViewState = .loaded(cards)
     }
 }

@@ -31,7 +31,7 @@ struct SavedCardsDataView: View {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 0) {
                     ForEach(cards, id: \.id) { card in
-                        CardView(isCardSaved: true, isFromSavedCardView: true, card: card)
+                        CardView(isFromSavedCardView: true, card: card)
                     }
                 }
                 .navigationTitle("Saved Cards")
