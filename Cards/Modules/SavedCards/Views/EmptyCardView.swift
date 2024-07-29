@@ -45,9 +45,10 @@ struct EmptyCardView: View {
         .padding(.horizontal)
         .padding(.top, 8)
         .onTapGesture {
-            viewModel.refreshView()
+            if viewModel.liveCardsViewState == .error {
+                viewModel.refreshView()
+            }
         }
-
     }
 }
 
