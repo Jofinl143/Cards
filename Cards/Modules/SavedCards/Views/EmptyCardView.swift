@@ -1,7 +1,10 @@
 import SwiftUI
 
 struct EmptyCardView: View {
+    @ObservedObject var viewModel = LiveCardsViewModel()
+    
     let text: String
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             HStack {
@@ -32,7 +35,7 @@ struct EmptyCardView: View {
         .foregroundColor(.white)
         .padding()
         .background(
-            LinearGradient(colors: [Color(red: 176/255, green: 143/255, blue: 38/255, opacity: 1), Color.black], startPoint: .top, endPoint: .bottom)
+            LinearGradient(colors: [Color(red: 255/255, green: 100/255, blue: 38/255, opacity: 1), Color.black], startPoint: .top, endPoint: .bottom)
         )
         .overlay(RoundedRectangle(cornerRadius: 6)
             .stroke(Color.black.opacity(0.5), lineWidth: 1)
@@ -41,6 +44,9 @@ struct EmptyCardView: View {
         .shadow(radius: 5)
         .padding(.horizontal)
         .padding(.top, 8)
+        .onTapGesture {
+            viewModel.refreshView()
+        }
 
     }
 }

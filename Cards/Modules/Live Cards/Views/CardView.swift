@@ -53,7 +53,7 @@ struct CardView: View {
             
             HStack {
                 Text(card.credit_card_type)
-                    .font(.system(size: 20, weight: .semibold, design: .monospaced))
+                    .font(.system(size: 18, weight: .semibold, design: .monospaced))
                     .accessibilityIdentifier("cardTypeText")
                 Spacer()
                 Text(card.credit_card_expiry_date)

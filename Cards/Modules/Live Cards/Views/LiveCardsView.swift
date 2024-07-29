@@ -9,9 +9,9 @@ struct LiveCardsView: View {
             case let .loaded(cards):
                 LiveCardDataView(viewModel: viewModel, cards: cards)
             case .loading:
-                EmptyCardView(text: "Loading...")
+                EmptyCardView(viewModel: viewModel, text: "Loading...")
             case .error:
-                EmptyCardView(text: "Oops, Try again")
+                EmptyCardView(viewModel: viewModel, text: "Sorry, Tap card to refresh")
             }
         }
         .onAppear {

@@ -98,4 +98,9 @@ class LiveCardsViewModel: ObservableObject {
     func deleteCard(card: Card) {
         db.deleteCardByID(id: card.id)
     }
+    
+    func refreshView() {
+        liveCardsViewState = .loading
+        fetchCards()
+    }
 }
