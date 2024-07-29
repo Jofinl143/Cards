@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LiveCardsView: View {
-    @ObservedObject var viewModel = LiveCardViewModel()
+    @ObservedObject var viewModel = LiveCardsViewModel()
     
     var body: some View {
         VStack(spacing: 0) {
@@ -11,7 +11,7 @@ struct LiveCardsView: View {
             case .loading:
                 EmptyCardView(text: "Loading...")
             case .error:
-                EmptyCardView(text: "Oops, Tap to refresh")
+                EmptyCardView(text: "Oops, Try again")
             }
         }
         .onAppear {
@@ -23,7 +23,7 @@ struct LiveCardsView: View {
 }
 
 struct LiveCardDataView: View {
-    @ObservedObject var viewModel = LiveCardViewModel()
+    @ObservedObject var viewModel = LiveCardsViewModel()
     @State private var path = NavigationPath()
     
     let cards: [Dictionary<String, [Card]>.Element]

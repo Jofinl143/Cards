@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CardView: View {
-    @ObservedObject var liveCardViewModel = LiveCardViewModel()
+    @ObservedObject var liveCardViewModel = LiveCardsViewModel()
     
     let isFromSavedCardView: Bool
     let card: Card
@@ -63,7 +63,7 @@ struct CardView: View {
         .overlay(RoundedRectangle(cornerRadius: 6)
             .stroke(Color.black.opacity(0.5), lineWidth: 1)
         )
-        .alert("Your card is saved", isPresented: $liveCardViewModel.showCardSavedAlert) {
+        .alert(liveCardViewModel.showCardSavedAlertMessage, isPresented: $liveCardViewModel.showCardSavedAlert) {
             Button("OK", role: .cancel) { }
         }
         .cornerRadius(8)

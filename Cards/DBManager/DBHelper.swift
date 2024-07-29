@@ -102,4 +102,19 @@ class DBHelper {
         }
         sqlite3_finalize(deleteStatement)
     }
+    
+    func deleteAllRows() {
+        let deleteStatementString = "DELETE FROM CARD;"
+        var deleteStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, deleteStatementString, -1, &deleteStatement, nil) == SQLITE_OK {
+            if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                print("Successfully deleted all rowns from CARD")
+            } else {
+                print("Could not delete all rowns from CARD")
+            }
+        } else {
+            print("DELETE statement could not be prepared")
+        }
+        sqlite3_finalize(deleteStatement)
+    }
 }

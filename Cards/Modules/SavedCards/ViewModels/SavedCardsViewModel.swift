@@ -9,6 +9,8 @@ enum SavedCardsViewState: Equatable {
         switch (lhs, rhs) {
         case (.loading, .loading):
             return true
+        case (.error, .error):
+            return true
         case let (.loaded(lhsCards), .loaded(rhsCards)):
             return lhsCards == rhsCards
         default:
