@@ -102,4 +102,31 @@ final class LiveCardsViewModelTests: XCTestCase {
         // Then show error alert
         XCTAssertEqual(liveCardsViewModel?.showCardSavedAlert, true)
     }
+    
+    func testDeleteCard() {
+
+        let card1 = Card(
+            id: 1,
+            uid: "testUid1",
+            credit_card_number: "testCardNumber1",
+            credit_card_expiry_date: "testExpiry1",
+            credit_card_type: "testType1",
+            isCardSaved: 1
+        )
+        
+        // Insert a card to db
+        _ = db.insert(
+            id: card1.id,
+            uid: card1.uid,
+            credit_card_number: card1.credit_card_number,
+            credit_card_expiry_date: card1.credit_card_expiry_date,
+            credit_card_type: card1.credit_card_type,
+            isCardSaved: 1
+        )
+        
+        liveCardsViewModel?.deleteCard(card: card1)
+        
+        // Then there are no cards in db
+        XCTAssertTrue(db.read()?.isEmpty == true)
+    }
 }

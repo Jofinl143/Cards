@@ -11,7 +11,7 @@ struct EmptyCardView: View {
             }
             
             Text(text)
-                .font(.system(size: 18, weight: .semibold, design: .monospaced))
+                .font(.system(size: 14, weight: .semibold, design: .monospaced))
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding()
             Image(systemName: "esim")

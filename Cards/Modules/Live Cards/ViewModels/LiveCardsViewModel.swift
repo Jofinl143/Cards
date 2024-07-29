@@ -38,10 +38,12 @@ class LiveCardsViewModel: ObservableObject {
             switch result {
             case .success(let cards):
                 if cards.isEmpty {
-                    self?.liveCardsViewState = .error
+                    DispatchQueue.main.async {
+                        self?.liveCardsViewState = .error
+                    }
                 } else {
                     
-                    var cachedCards = cards
+                    let cachedCards = cards
                     // Grouping cards according to type
                     let cardsGroupedByType: [String : [Card]] = Dictionary(grouping: cachedCards, by: { $0.credit_card_type })
                     
@@ -52,7 +54,9 @@ class LiveCardsViewModel: ObservableObject {
                     }
                 }
             case .failure:
-                self?.liveCardsViewState = .error
+                DispatchQueue.main.async {
+                    self?.liveCardsViewState = .error
+                }
             }
         }
     }
@@ -65,7 +69,7 @@ class LiveCardsViewModel: ObservableObject {
         }
         
         showCardSavedAlert = db.insert(id: card.id, uid: card.uid, credit_card_number: card.credit_card_number, credit_card_expiry_date: card.credit_card_expiry_date, credit_card_type: card.credit_card_type, isCardSaved: 1)
-        
+        Task { @MainActor in
         if case let .loaded(cardDetails) = liveCardsViewState {
             var cachedCardDetails = cardDetails
             guard var cardTypeArray = cachedCardDetails.first(where: { $0.key == card.credit_card_type }), let itemIndex = cachedCardDetails.firstIndex(where: { $0.key == card.credit_card_type } ) else {
@@ -86,7 +90,8 @@ class LiveCardsViewModel: ObservableObject {
             }
             cardTypeArray.value = filtered
             cachedCardDetails[itemIndex] = cardTypeArray
-            liveCardsViewState = .loaded(cachedCardDetails)
+                liveCardsViewState = .loaded(cachedCardDetails)
+            }
         }
     }
     
