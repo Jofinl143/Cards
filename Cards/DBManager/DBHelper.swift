@@ -2,6 +2,7 @@ import Foundation
 import SQLite3
 
 class DBHelper {
+    
     init() {
         db = openDatabase()
         createTable()
@@ -23,6 +24,7 @@ class DBHelper {
         }
     }
     
+    // Create Table in the DB
     func createTable() {
         let createTableString = "CREATE TABLE IF NOT EXISTS CARD(Id INTEGER PRIMARY KEY,uid TEXT,creditCardNumber TEXT,creditCardExpiryDate TEXT,creditCardType TEXT, isCardSaved INTEGER);"
         var createTableStatement: OpaquePointer? = nil
@@ -38,6 +40,7 @@ class DBHelper {
         sqlite3_finalize(createTableStatement)
     }
     
+    // Inser data to table
     func insert(id: Int, uid: String, credit_card_number: String, credit_card_expiry_date: String, credit_card_type: String, isCardSaved: Int) -> Bool {
         
         let insertStatementString = "INSERT INTO CARD (Id, uid, creditCardNumber, creditCardExpiryDate, creditCardType, isCardSaved) VALUES (?, ?, ?, ?, ?, ?);"
@@ -64,6 +67,7 @@ class DBHelper {
         return false
     }
     
+    // Read data from the table
     func read() -> [Card]? {
         let queryStatementString = "SELECT * FROM CARD;"
         var queryStatement: OpaquePointer? = nil
@@ -87,6 +91,7 @@ class DBHelper {
         return cards
     }
     
+    // Delete card by ID from table
     func deleteCardByID(id: Int) {
         let deleteStatementStirng = "DELETE FROM CARD WHERE Id = ?;"
         var deleteStatement: OpaquePointer? = nil
@@ -103,6 +108,7 @@ class DBHelper {
         sqlite3_finalize(deleteStatement)
     }
     
+    // Delete all rows from table
     func deleteAllRows() {
         let deleteStatementString = "DELETE FROM CARD;"
         var deleteStatement: OpaquePointer? = nil

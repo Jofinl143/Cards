@@ -16,7 +16,6 @@
 		B4AE08682C53701300643F06 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4AE08672C53701300643F06 /* Preview Assets.xcassets */; };
 		B4AE08722C53701300643F06 /* SavedCardsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE08712C53701300643F06 /* SavedCardsViewModelTests.swift */; };
 		B4AE087C2C53701300643F06 /* CardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE087B2C53701300643F06 /* CardsUITests.swift */; };
-		B4AE087E2C53701300643F06 /* CardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE087D2C53701300643F06 /* CardsUITestsLaunchTests.swift */; };
 		B4AE08912C5456F900643F06 /* LiveCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE08902C5456F900643F06 /* LiveCardsViewModel.swift */; };
 		B4AE08932C54570A00643F06 /* LiveCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE08922C54570A00643F06 /* LiveCardsView.swift */; };
 		B4AE08972C54573C00643F06 /* Cards.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AE08962C54573C00643F06 /* Cards.swift */; };
@@ -58,7 +57,6 @@
 		B4AE08712C53701300643F06 /* SavedCardsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardsViewModelTests.swift; sourceTree = "<group>"; };
 		B4AE08772C53701300643F06 /* CardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AE087B2C53701300643F06 /* CardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsUITests.swift; sourceTree = "<group>"; };
-		B4AE087D2C53701300643F06 /* CardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B4AE08902C5456F900643F06 /* LiveCardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCardsViewModel.swift; sourceTree = "<group>"; };
 		B4AE08922C54570A00643F06 /* LiveCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCardsView.swift; sourceTree = "<group>"; };
 		B4AE08962C54573C00643F06 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				B4AE087B2C53701300643F06 /* CardsUITests.swift */,
-				B4AE087D2C53701300643F06 /* CardsUITestsLaunchTests.swift */,
 			);
 			path = CardsUITests;
 			sourceTree = "<group>";
@@ -410,7 +407,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B4AE087E2C53701300643F06 /* CardsUITestsLaunchTests.swift in Sources */,
 				B4AE087C2C53701300643F06 /* CardsUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,5 +10,5 @@ public struct Card: Codable, Equatable, Comparable, Hashable {
     let credit_card_number: String
     let credit_card_expiry_date: String
     let credit_card_type: String
-    var isCardSaved: Int32? // Int is used because SQLite db doesnt support Bool
+    var isCardSaved: Int32? // isCardSaved used to check the card is saved or not and inserted toSQLite3 DB. Datatype Int is used because SQLite3 db doesnt support Bool
 }

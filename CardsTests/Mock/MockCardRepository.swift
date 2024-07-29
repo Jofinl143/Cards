@@ -4,7 +4,6 @@ import Foundation
 class MockCardRepository: NetworkingService {
     
     func fetchData<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void) {
-        // Mock the data and response here (e.g., create a sample JSON response)
         let jsonString = """
             [{
                 "id": 1,

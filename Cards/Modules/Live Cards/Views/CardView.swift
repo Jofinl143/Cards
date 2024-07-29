@@ -20,12 +20,15 @@ struct CardView: View {
             HStack {
                 Text("Nicolas Martin")
                     .font(.system(size: 18, weight: .medium, design: .serif))
+                    .accessibilityIdentifier("nameText")
+                
                 Spacer()
                 if !isFromSavedCardView {
                     Image(systemName: plusOrMinusImage)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 24, height: 24)
+                        .accessibilityIdentifier("addOrRemoveImage")
                         .onTapGesture {
                             if card.isCardSaved == 1 {
                                 liveCardViewModel.deleteCard(card: card)
@@ -38,8 +41,9 @@ struct CardView: View {
             .padding()
             
             Text(card.credit_card_number)
-                    .font(.system(size: 25, weight: .semibold, design: .rounded))
-            .padding()
+                .font(.system(size: 25, weight: .semibold, design: .rounded))
+                .accessibilityIdentifier("cardNumberText")
+                .padding()
             
             Image(systemName: "esim")
                 .resizable()
@@ -50,8 +54,10 @@ struct CardView: View {
             HStack {
                 Text(card.credit_card_type)
                     .font(.system(size: 20, weight: .semibold, design: .monospaced))
+                    .accessibilityIdentifier("cardTypeText")
                 Spacer()
                 Text(card.credit_card_expiry_date)
+                    .accessibilityIdentifier("expiryText")
                     .font(.system(size: 14, weight: .medium))
             }
             .padding()

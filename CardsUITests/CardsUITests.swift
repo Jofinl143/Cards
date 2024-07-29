@@ -1,34 +1,22 @@
 import XCTest
 
 final class CardsUITests: XCTestCase {
-
+    let app = XCUIApplication()
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app.launch()
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testSaveCard() throws {
+        
+        app.scrollViews.children(matching: .other).element(boundBy: 0).children(matching: .other).element/*@START_MENU_TOKEN@*/.children(matching: .button).matching(identifier: "nameText-addOrRemoveImage-cardNumberText-cardTypeText-expiryText").element(boundBy: 1).images["addOrRemoveImage"]/*[[".children(matching: .button).matching(identifier: \"Nicolas Martin, 1228-1221-1221-1431, american_express, 2026-07-29\").element(boundBy: 1)",".images[\"Add\"]",".images[\"addOrRemoveImage\"]",".children(matching: .button).matching(identifier: \"nameText-addOrRemoveImage-cardNumberText-cardTypeText-expiryText\").element(boundBy: 1)"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/.tap()
+        
+        app.alerts["Your card is saved"].scrollViews.otherElements.buttons["OK"].tap()
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
 }

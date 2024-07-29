@@ -1,20 +1,13 @@
 import Foundation
 import Combine
 
-enum APIError: LocalizedError {
-    /// Invalid request, e.g. invalid URL
-    case invalidRequestError(String)
-    
-    /// Indicates an error on the transport layer, e.g. not being able to connect to the server
-    case transportError(Error)
-}
-
 protocol NetworkingService {
     func fetchData<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void)
 }
 
 class CardRepository: NetworkingService {
-            
+      
+    // A generic fetch method to fetch any type for data
     func fetchData<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void) {
         guard let url =
                 URL(string: "https://random-data-api.com/api/v2/credit_cards?size=100") else {
@@ -35,22 +28,4 @@ class CardRepository: NetworkingService {
             }
         }.resume()
     }
-
-    func fetchCards() -> AnyPublisher<[Card], Error> {
-        guard let url =
-                URL(string: "https://random-data-api.com/api/v2/credit_cards?size=100") else {
-            return Fail(error: APIError.invalidRequestError("URL invalid"))
-                .eraseToAnyPublisher()
-        }        
-        let request = URLRequest(url: url)
-        return URLSession.shared.dataTaskPublisher(for: request)
-            .mapError({ error in
-                return APIError.transportError(error)
-            })
-            .map(\.data)
-            .decode(type: [Card].self, decoder: JSONDecoder())
-            .eraseToAnyPublisher()
-    }
-    
-    
 }
