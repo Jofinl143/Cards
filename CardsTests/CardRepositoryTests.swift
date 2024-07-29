@@ -39,7 +39,7 @@ class CardRepositoryTests: XCTestCase {
         let expectation = self.expectation(description: "Fetch card data")
         cardRepository.jsonString = ""
         cardRepository.fetchData { (result: Result<[Card], Error>) in
-
+            
             if case .failure(let failure) = result {
                 XCTAssertNotNil(failure)
             }

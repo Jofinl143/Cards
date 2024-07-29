@@ -20,7 +20,7 @@ enum LiveCardsViewState: Equatable {
 }
 
 class LiveCardsViewModel: ObservableObject {
-    private var cancellables = Set<AnyCancellable>()
+    
     private var cardRepository: NetworkingService
     
     @Published var liveCardsViewState: LiveCardsViewState = .loading
@@ -63,40 +63,41 @@ class LiveCardsViewModel: ObservableObject {
     
     func saveCard(card: Card) {
         if let cards = db.read(), !cards.isEmpty, cards.contains(where: { $0.id == card.id }) {
-            showCardSavedAlert = true
-            showCardSavedAlertMessage = "Card already saved"
             return
         }
         
         showCardSavedAlert = db.insert(id: card.id, uid: card.uid, credit_card_number: card.credit_card_number, credit_card_expiry_date: card.credit_card_expiry_date, credit_card_type: card.credit_card_type, isCardSaved: 1)
+        
+        // updating the card model array
         Task { @MainActor in
-        if case let .loaded(cardDetails) = liveCardsViewState {
-            var cachedCardDetails = cardDetails
-            guard var cardTypeArray = cachedCardDetails.first(where: { $0.key == card.credit_card_type }), let itemIndex = cachedCardDetails.firstIndex(where: { $0.key == card.credit_card_type } ) else {
-                return
-            }
-            var filtered = cardTypeArray.value
-            var newCard: Card?
-            var index = 0
-            for item in filtered {
-                if card.id == item.id {
-                    index = filtered.firstIndex(of: item) ?? 0
-                    newCard = item
-                    newCard?.isCardSaved = 1
+            if case let .loaded(cardDetails) = liveCardsViewState {
+                var cachedCardDetails = cardDetails
+                guard var cardTypeArray = cachedCardDetails.first(where: {
+                    $0.key == card.credit_card_type
+                }), let itemIndex = cachedCardDetails.firstIndex(where: {
+                    $0.key == card.credit_card_type
+                } ) else {
+                    return
                 }
-            }
-            if let card = newCard {
-                filtered[index] = card
-            }
-            cardTypeArray.value = filtered
-            cachedCardDetails[itemIndex] = cardTypeArray
+                var filtered = cardTypeArray.value
+                var newCard: Card?
+                var index = 0
+                for item in filtered {
+                    if card.id == item.id {
+                        index = filtered.firstIndex(of: item) ?? 0
+                        newCard = item
+                        newCard?.isCardSaved = 1
+                    }
+                }
+                if let card = newCard {
+                    filtered[index] = card
+                }
+                cardTypeArray.value = filtered
+                cachedCardDetails[itemIndex] = cardTypeArray
                 liveCardsViewState = .loaded(cachedCardDetails)
             }
         }
-    }
-    
-    func deleteCard(card: Card) {
-        db.deleteCardByID(id: card.id)
+        
     }
     
     func refreshView() {

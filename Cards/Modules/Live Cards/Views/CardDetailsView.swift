@@ -13,8 +13,8 @@ struct CardDetailsView: View {
             .padding()
             
             Text(card.credit_card_number)
-                    .font(.system(size: 25, weight: .semibold, design: .rounded))
-            .padding()
+                .font(.system(size: 25, weight: .semibold, design: .rounded))
+                .padding()
             
             Image(systemName: "esim")
                 .resizable()

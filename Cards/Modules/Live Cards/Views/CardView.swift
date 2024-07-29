@@ -2,12 +2,13 @@ import SwiftUI
 
 struct CardView: View {
     @ObservedObject var liveCardViewModel = LiveCardsViewModel()
+    @ObservedObject var savedCardViewModel = SavedCardsViewModel()
     
     let isFromSavedCardView: Bool
     let card: Card
     
     var plusOrMinusImage: String {
-        if card.isCardSaved == 1 {
+        if isFromSavedCardView {
             return "minus.circle"
         } else {
             return "plus.circle"
@@ -23,15 +24,15 @@ struct CardView: View {
                     .accessibilityIdentifier("nameText")
                 
                 Spacer()
-                if !isFromSavedCardView {
+                if card.isCardSaved != 1 || isFromSavedCardView {
                     Image(systemName: plusOrMinusImage)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 24, height: 24)
                         .accessibilityIdentifier("addOrRemoveImage")
                         .onTapGesture {
-                            if card.isCardSaved == 1 {
-                                liveCardViewModel.deleteCard(card: card)
+                            if isFromSavedCardView {
+                                savedCardViewModel.deleteCard(card: card)
                             } else {
                                 liveCardViewModel.saveCard(card: card)
                             }

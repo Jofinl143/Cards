@@ -31,4 +31,11 @@ class SavedCardsViewModel: ObservableObject {
         }
         savedCardsViewState = .loaded(cards)
     }
+    
+    func deleteCard(card: Card) {
+        savedCardsViewState = .loading
+        db.deleteCardByID(id: card.id)
+        getSavedCards()
+    }
+    
 }

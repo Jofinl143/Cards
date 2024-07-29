@@ -1,15 +1,12 @@
-//  Copyright © 2024 Woolworths Group Limited. All rights reserved.
-
 import XCTest
-import Combine
 @testable import Cards
 
 final class LiveCardsViewModelTests: XCTestCase {
-
+    
     var liveCardsViewModel: LiveCardsViewModel?
     var db: DBHelper = DBHelper()
     var cards: [Card]!
-
+    
     override func setUpWithError() throws {
         let mockCardRepository = MockCardRepository()
         liveCardsViewModel = LiveCardsViewModel(cardRepository: mockCardRepository)
@@ -23,7 +20,7 @@ final class LiveCardsViewModelTests: XCTestCase {
             credit_card_type: "testType1",
             isCardSaved: 1
         )
-
+        
         let card2 = Card(
             id: 2,
             uid: "testUid2",
@@ -32,7 +29,7 @@ final class LiveCardsViewModelTests: XCTestCase {
             credit_card_type: "testType2",
             isCardSaved: 1
         )
-
+        
         let card3 = Card(
             id: 3,
             uid: "testUid3",
@@ -43,13 +40,13 @@ final class LiveCardsViewModelTests: XCTestCase {
         )
         
         cards = [card1, card2, card3]
-    
+        
     }
-
+    
     override func tearDownWithError() throws {
         db.deleteAllRows()
     }
-
+    
     func testSaveCardSuccess() {
         // When initial state is loading
         XCTAssertEqual(liveCardsViewModel?.liveCardsViewState, .loading)
@@ -62,7 +59,7 @@ final class LiveCardsViewModelTests: XCTestCase {
             credit_card_type: "testType1",
             isCardSaved: 1
         )
-
+        
         liveCardsViewModel?.saveCard(card: card1)
         
         // Then sate should be loaded
@@ -78,6 +75,7 @@ final class LiveCardsViewModelTests: XCTestCase {
         // When initial state is loading
         XCTAssertEqual(liveCardsViewModel?.liveCardsViewState, .loading)
         
+        // Insert card to DB
         let card1 = Card(
             id: 1,
             uid: "testUid1",
@@ -87,7 +85,7 @@ final class LiveCardsViewModelTests: XCTestCase {
             isCardSaved: 1
         )
         
-        // Insert a card to db
+        // Insert same card to DB
         _ = db.insert(
             id: card1.id,
             uid: card1.uid,
@@ -96,37 +94,16 @@ final class LiveCardsViewModelTests: XCTestCase {
             credit_card_type: card1.credit_card_type,
             isCardSaved: 1
         )
-
+        
         liveCardsViewModel?.saveCard(card: card1)
         
-        // Then show error alert
-        XCTAssertEqual(liveCardsViewModel?.showCardSavedAlert, true)
-    }
-    
-    func testDeleteCard() {
-
-        let card1 = Card(
-            id: 1,
-            uid: "testUid1",
-            credit_card_number: "testCardNumber1",
-            credit_card_expiry_date: "testExpiry1",
-            credit_card_type: "testType1",
-            isCardSaved: 1
-        )
-        
-        // Insert a card to db
-        _ = db.insert(
-            id: card1.id,
-            uid: card1.uid,
-            credit_card_number: card1.credit_card_number,
-            credit_card_expiry_date: card1.credit_card_expiry_date,
-            credit_card_type: card1.credit_card_type,
-            isCardSaved: 1
-        )
-        
-        liveCardsViewModel?.deleteCard(card: card1)
-        
-        // Then there are no cards in db
-        XCTAssertTrue(db.read()?.isEmpty == true)
+        // Then we get the first card only
+        let card = db.read()?.first
+        XCTAssertEqual(db.read()?.count, 1)
+        XCTAssertEqual(card?.id, 1)
+        XCTAssertEqual(card?.uid, "testUid1")
+        XCTAssertEqual(card?.credit_card_number, "testCardNumber1")
+        XCTAssertEqual(card?.credit_card_type, "testType1")
+        XCTAssertEqual(card?.credit_card_expiry_date, "testExpiry1")
     }
 }

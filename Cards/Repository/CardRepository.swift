@@ -6,7 +6,7 @@ protocol NetworkingService {
 }
 
 class CardRepository: NetworkingService {
-      
+    
     // A generic fetch method to fetch any type for data
     func fetchData<T: Decodable>(completion: @escaping (Result<T, Error>) -> Void) {
         guard let url =

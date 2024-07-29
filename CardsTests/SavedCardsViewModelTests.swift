@@ -1,8 +1,8 @@
 import XCTest
 @testable import Cards
 
-final class CardsTests: XCTestCase {
-
+final class SavedCardsViewModelTests: XCTestCase {
+    
     var savedCardsViewModel: SavedCardsViewModel?
     var db: DBHelper = DBHelper()
     var cards: [Card]!
@@ -19,7 +19,7 @@ final class CardsTests: XCTestCase {
             credit_card_type: "testType1",
             isCardSaved: 1
         )
-
+        
         let card2 = Card(
             id: 2,
             uid: "testUid2",
@@ -28,7 +28,7 @@ final class CardsTests: XCTestCase {
             credit_card_type: "testType2",
             isCardSaved: 1
         )
-
+        
         let card3 = Card(
             id: 3,
             uid: "testUid3",
@@ -51,7 +51,7 @@ final class CardsTests: XCTestCase {
             )
         }
     }
-
+    
     func testGetSavedCardsLoaded() {
         // When initial state is loading
         XCTAssertEqual(savedCardsViewModel?.savedCardsViewState, .loading)
@@ -75,6 +75,33 @@ final class CardsTests: XCTestCase {
         
         // Then sate should be error
         XCTAssertEqual(savedCardsViewModel?.savedCardsViewState, SavedCardsViewState.error)
+    }
+    
+    func testDeleteCard() {
+        db.deleteAllRows()
+        let card1 = Card(
+            id: 1,
+            uid: "testUid1",
+            credit_card_number: "testCardNumber1",
+            credit_card_expiry_date: "testExpiry1",
+            credit_card_type: "testType1",
+            isCardSaved: 1
+        )
+        
+        // Insert a card to db
+        _ = db.insert(
+            id: card1.id,
+            uid: card1.uid,
+            credit_card_number: card1.credit_card_number,
+            credit_card_expiry_date: card1.credit_card_expiry_date,
+            credit_card_type: card1.credit_card_type,
+            isCardSaved: 1
+        )
+        
+        savedCardsViewModel?.deleteCard(card: card1)
+        
+        // Then there are no cards in db
+        XCTAssertTrue(db.read()?.isEmpty == true)
     }
     
     override func tearDownWithError() throws {

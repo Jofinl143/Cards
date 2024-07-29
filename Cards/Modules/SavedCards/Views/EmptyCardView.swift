@@ -22,7 +22,7 @@ struct EmptyCardView: View {
                 .scaledToFit()
                 .frame(height: 30)
                 .padding()
-
+            
             HStack {
                 Text("Visa")
                     .font(.system(size: 20, weight: .semibold, design: .monospaced))

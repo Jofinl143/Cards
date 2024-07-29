@@ -34,13 +34,6 @@
 			remoteGlobalIDString = B4AE085C2C53701200643F06;
 			remoteInfo = Cards;
 		};
-		B4AE08782C53701300643F06 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B4AE08552C53701200643F06 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B4AE085C2C53701200643F06;
-			remoteInfo = Cards;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +47,6 @@
 		B4AE08672C53701300643F06 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B4AE086D2C53701300643F06 /* CardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AE08712C53701300643F06 /* SavedCardsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardsViewModelTests.swift; sourceTree = "<group>"; };
-		B4AE08772C53701300643F06 /* CardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4AE08902C5456F900643F06 /* LiveCardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCardsViewModel.swift; sourceTree = "<group>"; };
 		B4AE08922C54570A00643F06 /* LiveCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveCardsView.swift; sourceTree = "<group>"; };
 		B4AE08962C54573C00643F06 /* Cards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cards.swift; sourceTree = "<group>"; };
@@ -75,13 +67,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B4AE086A2C53701300643F06 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B4AE08742C53701300643F06 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -113,7 +98,6 @@
 			children = (
 				B4AE085D2C53701200643F06 /* Cards.app */,
 				B4AE086D2C53701300643F06 /* CardsTests.xctest */,
-				B4AE08772C53701300643F06 /* CardsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -275,24 +259,6 @@
 			productReference = B4AE086D2C53701300643F06 /* CardsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B4AE08762C53701300643F06 /* CardsUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B4AE08872C53701300643F06 /* Build configuration list for PBXNativeTarget "CardsUITests" */;
-			buildPhases = (
-				B4AE08732C53701300643F06 /* Sources */,
-				B4AE08742C53701300643F06 /* Frameworks */,
-				B4AE08752C53701300643F06 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B4AE08792C53701300643F06 /* PBXTargetDependency */,
-			);
-			name = CardsUITests;
-			productName = CardsUITests;
-			productReference = B4AE08772C53701300643F06 /* CardsUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -307,10 +273,6 @@
 						CreatedOnToolsVersion = 15.4;
 					};
 					B4AE086C2C53701300643F06 = {
-						CreatedOnToolsVersion = 15.4;
-						TestTargetID = B4AE085C2C53701200643F06;
-					};
-					B4AE08762C53701300643F06 = {
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = B4AE085C2C53701200643F06;
 					};
@@ -331,7 +293,6 @@
 			targets = (
 				B4AE085C2C53701200643F06 /* Cards */,
 				B4AE086C2C53701300643F06 /* CardsTests */,
-				B4AE08762C53701300643F06 /* CardsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -347,13 +308,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		B4AE086B2C53701300643F06 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B4AE08752C53701300643F06 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -392,13 +346,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B4AE08732C53701300643F06 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -406,11 +353,6 @@
 			isa = PBXTargetDependency;
 			target = B4AE085C2C53701200643F06 /* Cards */;
 			targetProxy = B4AE086E2C53701300643F06 /* PBXContainerItemProxy */;
-		};
-		B4AE08792C53701300643F06 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B4AE085C2C53701200643F06 /* Cards */;
-			targetProxy = B4AE08782C53701300643F06 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -541,10 +483,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cards/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9Y7K2Z6N3D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -578,10 +520,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Cards/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 9Y7K2Z6N3D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -656,42 +598,6 @@
 			};
 			name = Release;
 		};
-		B4AE08882C53701300643F06 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9Y7K2Z6N3D;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cards.com.CardsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Cards;
-			};
-			name = Debug;
-		};
-		B4AE08892C53701300643F06 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9Y7K2Z6N3D;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.cards.com.CardsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Cards;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -718,15 +624,6 @@
 			buildConfigurations = (
 				B4AE08852C53701300643F06 /* Debug */,
 				B4AE08862C53701300643F06 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B4AE08872C53701300643F06 /* Build configuration list for PBXNativeTarget "CardsUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B4AE08882C53701300643F06 /* Debug */,
-				B4AE08892C53701300643F06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
